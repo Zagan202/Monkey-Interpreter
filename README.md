@@ -25,6 +25,21 @@ This project is focused on parsing and evaluating a language called *Monkey*
 - Internal object system
 - Evaluator
 
+### MONKEY INTERPRETER TODO
+
+- [x] Lexer, REPL, Token
+- [ ] Lexer Write up
+- [ ] REPL Write up
+- [ ] Token Write up
+- [ ] Lexer,REPL, Token Code Comments
+- [ ] Parser
+- [ ] Parser Code Comments
+- [ ] Parser Write up
+- [ ] Eval
+- [ ] Eval Code Comments
+- [ ] Eval Write up
+
+
 ### Running Requirements 
 - GO version above 1.0
 - Change GOPATH to the project directory
