@@ -77,6 +77,7 @@ func (l *Lexer) readNumber() string {
 	return l.input[position:l.position]
 }
 
+//only works for integers, not floats, hex or octal notation
 func isDigit(ch byte) bool {
 	return '0' <= ch && ch <= '9'
 }
