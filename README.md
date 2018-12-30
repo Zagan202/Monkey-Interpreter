@@ -24,3 +24,10 @@ This project is focused on parsing and evaluating a language called *Monkey*
 - Abstract Syntax Tree (AST)
 - Internal object system
 - Evaluator
+
+### Running Requirements 
+- GO version above 1.0
+- Change GOPATH to the project directory
+  - [direnv](https://direnv.net/) works great for this and included in the project is a .envrc file that correctly reroutes the GOPATH to that project
+  - On Windows you will need to [change the enviorment variable](https://github.com/golang/go/wiki/SettingGOPATH)
+
