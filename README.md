@@ -28,9 +28,9 @@ This project is focused on parsing and evaluating a language called *Monkey*
 ### MONKEY INTERPRETER TODO
 
 - [x] Lexer, REPL, Token
-- [/] Lexer Write up
-- [/] REPL Write up
-- [/] Token Write up
+- [X] Lexer Write up
+- [X] REPL Write up
+- [X] Token Write up
 - [X] Lexer,REPL, Token Code Comments
 - [ ] Parser
 - [ ] Parser Code Comments
