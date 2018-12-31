@@ -4,6 +4,7 @@ import (
 	"monkey/token"
 )
 
+//Lexer Data Structure
 type Lexer struct {
 	input        string
 	position     int  // current position in input (points to current char)
@@ -11,22 +12,19 @@ type Lexer struct {
 	ch           byte //current char under examination
 }
 
+//New Constructor for lexer that initilizes the func readchar()
 func New(input string) *Lexer {
 	l := &Lexer{input: input}
 	l.readChar()
 	return l
 }
 
-func (l *Lexer) readChar() {
-	if l.readPosition >= len(l.input) {
-		l.ch = 0
-	} else {
-		l.ch = l.input[l.readPosition]
-	}
-	l.position = l.readPosition
-	l.readPosition += 1
+//newToken Constructor for Token struct
+func newToken(tokenType token.TokenType, ch byte) token.Token {
+	return token.Token{Type: tokenType, Literal: string(ch)}
 }
 
+//NextToken Goes through the code to recgonize which token is given
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
 
@@ -93,25 +91,14 @@ func (l *Lexer) NextToken() token.Token {
 	return tok
 }
 
-func (l *Lexer) peekChar() byte {
+func (l *Lexer) readChar() {
 	if l.readPosition >= len(l.input) {
-		return 0
+		l.ch = 0
 	} else {
-		return l.input[l.readPosition]
+		l.ch = l.input[l.readPosition]
 	}
-}
-
-func (l *Lexer) readNumber() string {
-	position := l.position
-	for isDigit(l.ch) {
-		l.readChar()
-	}
-	return l.input[position:l.position]
-}
-
-//only works for integers, not floats, hex or octal notation
-func isDigit(ch byte) bool {
-	return '0' <= ch && ch <= '9'
+	l.position = l.readPosition
+	l.readPosition++
 }
 
 func (l *Lexer) readIdentifier() string {
@@ -122,16 +109,33 @@ func (l *Lexer) readIdentifier() string {
 	return l.input[position:l.position]
 }
 
-func isLetter(ch byte) bool {
-	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
+func (l *Lexer) readNumber() string {
+	position := l.position
+	for isDigit(l.ch) {
+		l.readChar()
+	}
+	return l.input[position:l.position]
 }
 
-func newToken(tokenType token.TokenType, ch byte) token.Token {
-	return token.Token{Type: tokenType, Literal: string(ch)}
+func (l *Lexer) peekChar() byte {
+	if l.readPosition >= len(l.input) {
+		return 0
+	} else {
+		return l.input[l.readPosition]
+	}
 }
 
 func (l *Lexer) skipWhitespace() {
 	for l.ch == ' ' || l.ch == '\t' || l.ch == '\n' || l.ch == '\r' {
 		l.readChar()
 	}
+}
+
+//only works for integers, not floats, hex or octal notation
+func isDigit(ch byte) bool {
+	return '0' <= ch && ch <= '9'
+}
+
+func isLetter(ch byte) bool {
+	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
 }

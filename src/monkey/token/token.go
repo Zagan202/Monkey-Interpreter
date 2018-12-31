@@ -1,5 +1,15 @@
 package token
 
+/*
+Token Data Structure
+
+Type is used to distinguish between different types
+Such as integers brackets etc
+These are defined as constants below
+
+Literal-  value of the token, so we can reuse it later
+and the information whether a “number” token is a 5 or a 10 doesn’t get lost
+*/
 type TokenType string
 
 type Token struct {
@@ -50,6 +60,12 @@ var keywords = map[string]TokenType{
 	"else":   ELSE,
 	"return": RETURN,
 }
+
+/*
+LookupIdent checks the keywords table to see whether the given identifier is in fact a keyword.
+If it is, it returns the keyword’s TokenType constant. If it isn’t, we just get back token.IDENT,
+which is the TokenType for all user-defined identifiers
+*/
 
 func LookupIdent(indent string) TokenType {
 	if tok, ok := keywords[indent]; ok {

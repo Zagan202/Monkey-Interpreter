@@ -28,10 +28,10 @@ This project is focused on parsing and evaluating a language called *Monkey*
 ### MONKEY INTERPRETER TODO
 
 - [x] Lexer, REPL, Token
-- [ ] Lexer Write up
-- [ ] REPL Write up
-- [ ] Token Write up
-- [ ] Lexer,REPL, Token Code Comments
+- [/] Lexer Write up
+- [/] REPL Write up
+- [/] Token Write up
+- [X] Lexer,REPL, Token Code Comments
 - [ ] Parser
 - [ ] Parser Code Comments
 - [ ] Parser Write up
@@ -41,6 +41,11 @@ This project is focused on parsing and evaluating a language called *Monkey*
 
 
 ### Running Requirements 
+- Makefile included!
+  - make
+    - run main code
+  - make clean 
+    - clean any binaries created 
 - GO version above 1.0
 - Change GOPATH to the project directory
   - [direnv](https://direnv.net/) works great for this and included in the project is a .envrc file that correctly reroutes the GOPATH to that project

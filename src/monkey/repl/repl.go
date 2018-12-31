@@ -13,13 +13,19 @@ import (
 	"monkey/token"
 )
 
-const PROMT = ">> "
+//PROMPT is the cursor that the user inputs code after
+const PROMPT = ">> "
 
-func START(in io.Reader, out io.Writer) {
+/*
+Start reads from the input source until encountering a newline, take
+the just read line and pass it to an instance of our lexer and finally print all the tokens the lexer
+gives us until we encounter EOF.
+*/
+func Start(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
 
 	for {
-		fmt.Printf(PROMT)
+		fmt.Printf(PROMPT)
 		scanned := scanner.Scan()
 		if !scanned {
 			return
