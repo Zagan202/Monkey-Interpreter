@@ -39,6 +39,10 @@ type LetStatement struct {
 	Value Expression
 }
 
+/*
+The statementNode and TokenLiteral methods are there to fulfill the Node and
+Statement interfaces
+*/
 func (ls *LetStatement) statementNode()       {}
 func (ls *LetStatement) TokenLiteral() string { return ls.Token.Literal }
 
@@ -47,6 +51,10 @@ type Identifier struct {
 	Value string
 }
 
+/*
+The expressionNode and TokenLiteral methods are there to fulfill the Node and
+Statement interfaces
+*/
 func (i *Identifier) expressionNode()      {}
 func (i *Identifier) TokenLiteral() string { return i.Token.Literal }
 
@@ -65,5 +73,9 @@ type ReturnStatement struct {
 	ReturnValue Expression
 }
 
+/*
+The statementNode and TokenLiteral methods are there to fulfill the Node and
+Statement interfaces
+*/
 func (rs *ReturnStatement) statementNode()       {}
 func (rs *ReturnStatement) TokenLiteral() string { return rs.Token.Literal }
